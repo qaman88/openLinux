@@ -1,6 +1,7 @@
 # Compiler Info
 JAVAC   = javac
-JFLAGS  = -g -d .
+# this < -d . > command put package on this directory
+JFLAGS  = -d . 
 
 # Java Sorce Files 
 TARGET  = Driver.java
@@ -8,7 +9,7 @@ SOURCES = Hello.java
 PACKAGE = mypackage
 
 # Gabbage to clean
-GABBAGE = $(PACKAGE)
+GABBAGE = $(PACKAGE) *.class
 
 # Compile Source Files
 $(TARGET:.java=.class):
@@ -18,15 +19,13 @@ $(TARGET:.java=.class):
 run:
 	java $(PACKAGE)/$(TARGET:.java=)
 
-redo:
-	 @reset
-	 @rm -r $(GABBAGE)
-	 $(JAVAC) $(JFLAGS) $(SOURCES) $(TARGET)
-	 java $(PACKAGE)/$(TARGET:.java=)
-
 # Clean Gabbage
 clean:
-	 @rm -r $(GABBAGE)
+	 @rm -f -r  $(GABBAGE)
 	 @reset
      
-
+# redo = clean, compile and run
+redo:
+	 $(MAKE) -s clean
+	 $(MAKE) -s $(TARGET:.java=.class)
+	 $(MAKE) -s run

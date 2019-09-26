@@ -1,0 +1,255 @@
+/*
+int max = 100;
+for (int i = 0, j = max / 2 - 1, k = max / 4 - 1; i < max; i++, j = (i % 2) + j, k = (j % 2) + k)
+{
+	cout << "T = " << i << "\tB = " << j << "\tC = " << k << endl;
+}
+*/
+
+/*
+using namespace PIXELMATHS;
+NGBTLA003::title("opencv image maths master ");
+PIXELMATHS::Pixel high(cv::Vec3b(0, 255, 255));
+PIXELMATHS::Pixel low(cv::Vec3b(0, 0, 0));
+Mat A = imread("mask.jpg", CV_LOAD_IMAGE_COLOR);
+Mat B = imread("maskb.jpg", CV_LOAD_IMAGE_COLOR);
+
+int a = 0, b = 0, c = 0;
+
+for (int k = 0; k < 20; k++,a+=10,b+=12,c+=12) {
+	NGBTLA003::ImageFilter(A, B, low, Pixel(cv::Vec3b(a, b, c)));
+	NGBTLA003::SaveImage("Filter" + to_string(k) + ".jpg", A);
+	high = Pixel(cv::Vec3b(a, b, c));
+}*/
+/*
+
+//std::cout << "Number of Rows is " << 1 << endl;
+
+/*
+Mat A = imread(fname1, CV_LOAD_IMAGE_ANYCOLOR);
+Mat B = imread(fname2, CV_LOAD_IMAGE_COLOR);
+
+namedWindow("OriginalA", CV_WINDOW_AUTOSIZE);
+
+imshow("OriginalA",A);
+namedWindow("OriginalB", CV_WINDOW_NORMAL);
+imshow("OriginalB", B);
+
+ImageVideo::ImageMachine MC1(A);
+ImageVideo::ImageMachine MC2(B);
+ImageVideo::ImageMachine MC3 = MC1 - MC1;
+namedWindow("Effect", CV_WINDOW_KEEPRATIO);
+imshow("Effect", MC3.getImage());
+*/
+//ImageVideo::SubBackground(A, B);ImageVideo::ImageMachine MC1(image);
+//Mat result = eg1.getImage();
+//ImageVideo::ImageMachine eg2(image);
+//MC1 = MC1 / 2;
+//
+//Mat diff = MC1.getImage();
+//
+//ImageVideo::ImageMachine MC2(image);
+//MC2 = MC2 + MC1;
+//namedWindow("Edited", CV_WINDOW_AUTOSIZE);
+//imshow("Edited", MC2.getImage());
+//namedWindow("Original", CV_WINDOW_AUTOSIZE);
+//imshow("Original", MC1.getImage());
+//
+//	class ImageMachine {
+//		struct pixel {  // image pixel
+//			int R, G, B;
+//		};
+//	public:
+//		/* Copy Constructor
+//		* Takes image and copy its data into local pixel vector */
+//		ImageMachine(Mat img) : Image(img) {
+//			count = 0;
+//			rowSize = img.rows; colSize = img.cols;
+//			for (int row = 0; row < img.rows; row++) {
+//				for (int col = 0;col < img.cols;col++) {
+//					temp.B = img.at<Vec3b>(row, col)[0];
+//					temp.G = img.at<Vec3b>(row, col)[1];
+//					temp.R = img.at<Vec3b>(row, col)[2];
+//					ImageData.push_back(temp);
+//				}
+//			}
+//		}
+//		/* Copy Constructor
+//		* Param ImageMachine
+//		* Copy the MC data into new MC data
+//		*/
+//		ImageMachine(const ImageMachine & right) {
+//			ImageData = right.ImageData;
+//			Image = right.Image;
+//			rowSize = right.rowSize;
+//			colSize = right.colSize;
+//		}
+//
+//		/*
+//		*@param constant int,
+//		* Overload operators / * - +
+//		*/
+//		ImageMachine operator/(int val) {
+//			for (auto it = ImageData.begin(); it != ImageData.end();it++) {
+//				it->B = it->B / val;
+//				it->R = it->R / val;
+//				it->G = it->G / val;
+//			}
+//			return getImage();
+//		}
+//		ImageMachine operator*(int val) {
+//			for (auto it = ImageData.begin(); it != ImageData.end();it++) {
+//				it->B = it->B * val;
+//				it->R = it->R * val;
+//				it->G = it->G * val;
+//			}
+//			return getImage();
+//		}
+//		ImageMachine operator+(int val) {
+//			for (auto it = ImageData.begin(); it != ImageData.end();it++) {
+//				it->B = it->B + val;
+//				it->R = it->R + val;
+//				it->G = it->G + val;
+//			}
+//			return getImage();
+//		}
+//		ImageMachine operator-(int val) {
+//			count = 0;
+//			for (auto it = ImageData.begin(); it != ImageData.end();it++) {
+//				it->B = it->B - val;
+//				it->R = it->R - val;
+//				it->G = it->G - val;
+//				count++;
+//			}
+//			return getImage();
+//		}
+//
+//		/* Overload Operators + - with reference MC
+//			* @param right handside object
+//			* @return
+//		*/
+//		ImageMachine operator-(const ImageMachine & Ref) {
+//			count = 0;
+//			for (int row = 0; row < Ref.Image.rows; row++) {
+//				for (int col = 0;col < Ref.Image.cols;col++, count++) {
+//					ImageData[count].B = abs(Ref.Image.at<Vec3b>(row, col)[0] - Image.at<Vec3b>(row, col)[0]);
+//					ImageData[count].G = abs(Ref.Image.at<Vec3b>(row, col)[0] - Image.at<Vec3b>(row, col)[1]);
+//					ImageData[count].R = abs(Ref.Image.at<Vec3b>(row, col)[2] - Image.at<Vec3b>(row, col)[2]);
+//				}
+//			}
+//			return getImage();
+//		}ImageMachine operator+(const ImageMachine & Ref) {
+//			count = 0;
+//			for (int row = 0; row < Ref.Image.rows; row++) {
+//				for (int col = 0;col < Ref.Image.cols;col++, count++) {
+//					ImageData[count].B = abs(Ref.Image.at<Vec3b>(row, col)[0] + Image.at<Vec3b>(row, col)[0]);
+//					ImageData[count].G = abs(Ref.Image.at<Vec3b>(row, col)[0] + Image.at<Vec3b>(row, col)[1]);
+//					ImageData[count].R = abs(Ref.Image.at<Vec3b>(row, col)[2] + Image.at<Vec3b>(row, col)[2]);
+//				}
+//			}
+//			return getImage();
+//		}
+//
+//		Mat getImage() {
+//			WriteData();
+//			return Image;
+//		}
+//
+//	private:
+//		vector<pixel> ImageData;
+//		Mat Image;
+//		int count, rowSize, colSize;
+//		pixel temp;
+//	protected:
+//		/*
+//		* no param - write changes made on pixel vector data into image
+//		*/
+//		void WriteData() {
+//			count = 0;
+//			for (int row = 0; row < Image.rows; row++) {
+//				for (int col = 0;col < Image.cols;col++, count++) {
+//					temp = ImageData[count];
+//					Image.at<Vec3b>(row, col)[0] = temp.B;
+//					Image.at<Vec3b>(row, col)[1] = temp.G;
+//					Image.at<Vec3b>(row, col)[2] = temp.R;
+//				}
+//			}
+//		}
+//	}; 
+//
+//	class VideoMachine {
+//	public:
+//
+//	private:
+//	};
+//
+//	void SubBackground(Mat A, Mat B) {
+//		Mat frame = A, C = B; int kb = 0;
+//		Ptr<BackgroundSubtractor>  pMOG2 = createBackgroundSubtractorMOG2();; // background subractor
+//		while ((char)kb != 27 && kb != 'q') {
+//			pMOG2->apply(B, frame); //update the background model
+//			rectangle(frame, cv::Point(10, 2), cv::Point(100, 20),
+//				cv::Scalar(255, 255, 255), -1);
+//			putText(frame, "Tlamangile", cv::Point(50, 100),
+//				FONT_HERSHEY_SIMPLEX, 0.5, cv::Scalar(0, 0, 0));
+//			C = C.data == A.data ? B : A;
+//			namedWindow("Background", CV_WINDOW_AUTOSIZE);
+//			imshow("Background", frame);
+//			kb = waitKey(30);
+//		}
+//	}
+
+ // RGB pixels CV_8UC3 thus 3 pixels each of 8 bits
+	NGBTLA003::Pixel pix1(C.at<Vec3b>(0, 0)), pix2 = B.at<Vec3b>(0, 0), pix3 = 55;
+	pix2 = 66;
+	pix3 = pix2 - pix1;
+	cout << "R=" << pix1.RGB[0] << " B=" << pix1.RGB[1] << " G=" << pix1.RGB[2] << endl;
+	cout << "R=" << pix2.RGB[0] << " B=" << pix2.RGB[1] << " G=" << pix2.RGB[2] << endl;
+	cout << "R=" << pix3.RGB[0] << " B=" << pix3.RGB[1] << " G=" << pix3.RGB[2] << endl;
+
+
+	
+	/*Mat MUL = Mat::zeros(C.rows, C.cols, CV_8UC3);
+	Mat REM = Mat::zeros(C.rows, C.cols, CV_8UC3);
+	Mat ADD = Mat::zeros(C.rows, C.cols, CV_8UC3);
+	Mat SUB = Mat::zeros(C.rows, C.cols, CV_8UC3);
+	Mat kDIV = Mat::zeros(C.rows, C.cols, CV_8UC3);
+	Mat kSUB = Mat::zeros(C.rows, C.cols, CV_8UC3);
+	Mat kMUL = Mat::zeros(C.rows, C.cols, CV_8UC3);
+	Mat kREM = Mat::zeros(C.rows, C.cols, CV_8UC3);
+	Mat kADD = Mat::zeros(C.rows, C.cols, CV_8UC3);*/
+
+	//int k = 4;
+	// Image Arithmatic
+	NGBTLA003::add(DIV, B, C);
+	/*NGBTLA003::mul(MUL, B, C);
+	NGBTLA003::rem(REM, B, C);
+	NGBTLA003::add(ADD, B, C);
+	NGBTLA003::sub(SUB, B, C);
+
+	NGBTLA003::div(kDIV, B, k);
+	NGBTLA003::mul(kMUL, B, k);
+	NGBTLA003::add(kADD, B, k);
+	NGBTLA003::rem(kREM, B, k);
+	NGBTLA003::sub(kSUB, B, k);*/
+
+	// Color Trasform
+	//NGBTLA003::colorTransform(A, CV_RGB2GRAY);
+
+	// Display 
+	//NGBTLA003::show("Before", B);
+	//NGBTLA003::show("After", ADD);
+
+	// save Image
+	NGBTLA003::saveImage("DIV" + fname3, DIV);
+	/*NGBTLA003::saveImage("MUL" + fname3, MUL);
+	NGBTLA003::saveImage("REM" + fname3, REM);
+	NGBTLA003::saveImage("ADD" + fname3, ADD);
+	NGBTLA003::saveImage("SUB" + fname3, SUB);
+
+	NGBTLA003::saveImage("kDIV" + fname3, kDIV);
+	NGBTLA003::saveImage("kMUL" + fname3, kMUL);
+	NGBTLA003::saveImage("kADD" + fname3, kADD);
+	NGBTLA003::saveImage("kSUB" + fname3, kSUB);
+	NGBTLA003::saveImage("kREM" + fname3, kREM);
+*/

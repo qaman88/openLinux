@@ -1,0 +1,45 @@
+/**
+* Author: Tlamangile Expert Ngobeni
+* Student#: NGBTLA003
+* Varsity: University of Cape Town
+* Course: Computer Science CSC3023F
+* Subject: Assignment 3 Template Specialisation and the STL
+* Email: tlamangile@gmail.com
+* Date: 2014/05/13 22:58:16
+* Git Repos : https://github.com/qaman88/Assignment3
+*/
+
+The Assignment testing is divided into two sections:
+#1-DriverUnitTest.cpp
+ Hardcoded with the keys, vector and input file "input.data", and all outputs are
+ directed to "results" folder with descriptive names.
+ This is unit tests handling group, pack and all possible encrypt and decrypt
+ of different Cipher(XOR, Vignere) and modes(ECB,CBC)
+ <Run Unit TESTS>
+ *first compile with "make"
+ *use "make runu" to run all the cases
+ *each run each test separate use "./unit <TESTNAME> 
+ *Testnames : XOR_ECB, XOR_CBC, Vignere_ECB, PACK, GROUP
+ *Each test both encrypt and decrypt where is applicable
+ *For help with unit test use "./unit -?" or "./unit -h"
+ 
+#2-DriverCmdlineParser.cpp
+ This is a flexible testing driver, allows user to interact with the program 
+ via cmdline parser.
+ User specify keys, vector, ciphers, modes and source files names
+ <Run Driver>
+ *first clean with "make clean" & compile with "make"
+ *use "make runc" to run with dafualt values and file names
+ *use "./cmd -tag <name>" to customise the program type and modes
+ *multiple tags is allowed, e.g. if you want to encrypt, group & pack
+	"./cmd -e XOR -g true -pack -true"
+ *for help with tags use "make help" or "./cmd -?"
+ *notice tags consist of defferent type: bool, string & uint32_t
+ *In case of misspelling or invalid names, the program will simple ignore 
+ 
+ Some guidlines and feedback are printed in terminal to assist on running the program.
+ Quick help use "make help", when done don't forget to clean via "make clean"
+
+*Git Repos https://github.com/qaman88/Assignment3
+
+ ;) Have Fun!
